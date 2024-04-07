@@ -1,0 +1,35 @@
+.game_container {
+
+  background-color: #2B0040;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30vw;
+  height: 80vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+
+  .square {
+    background-color: mediumpurple;
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+
+  }
+}

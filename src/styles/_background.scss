@@ -6,10 +6,12 @@
   justify-content: flex-start;
   align-items: flex-end;
   background-color: mediumpurple;
+  position: relative;
 
 
 
   .title_container {
+    display: flex;
     justify-content: flex-start;
     align-items: flex-end;
     margin-bottom: 48px;
