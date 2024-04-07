@@ -18,10 +18,12 @@ const Game = () => {
 
     function handleClick(squareNumber){
         let squaresCopy = [...squares];
-        squaresCopy[squareNumber] = isXturn ? 'X' : 'O';
         if (squaresCopy[squareNumber] !== ''){
             return;
         }
+        squaresCopy[squareNumber] = isXturn ? 'X' : 'O';
+        console.log(squaresCopy);
+
         setIsXturn(!isXturn);
         setSquares(squaresCopy);
 
