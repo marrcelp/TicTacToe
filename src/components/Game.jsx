@@ -10,23 +10,27 @@ function Square({value, onClickHandler}){
 //3 4 5
 //6 7 8
 
-const [squares, setSquares] = useState(Array(9).fill(''));
-const [isXturn, setIsXturn] = useState(true);
-
-function handleClick(squareNumber){
-    let squaresCopy = [...squares];
-    squaresCopy[squareNumber] = isXturn ? 'X' : 'O';
-    setIsXturn(!isXturn);
-    setSquares(squaresCopy);
-
-
-
-}
 
 const Game = () => {
+
+    const [squares, setSquares] = useState(Array(9).fill(''));
+    const [isXturn, setIsXturn] = useState(true);
+
+    function handleClick(squareNumber){
+        let squaresCopy = [...squares];
+        squaresCopy[squareNumber] = isXturn ? 'X' : 'O';
+        if (squaresCopy[squareNumber] !== ''){
+            return;
+        }
+        setIsXturn(!isXturn);
+        setSquares(squaresCopy);
+
+
+
+    }
+
     return (
         <div className='game_container'>
-            <div className='game_squares'>
                 <div className='row'>
                     <Square value={squares[0]} onClickHandler={() => handleClick(0)}/>
                     <Square value={squares[1]} onClickHandler={() => handleClick(1)}/>
@@ -44,8 +48,6 @@ const Game = () => {
                     <Square value={squares[7]} onClickHandler={() => handleClick(7)}/>
                     <Square value={squares[8]} onClickHandler={() => handleClick(8)}/>
                 </div>
-            </div>
-
         </div>
     );
 };
