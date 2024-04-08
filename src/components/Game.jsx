@@ -63,7 +63,7 @@ const Game = () => {
 
     useEffect(() => {
         if (!getWinner(squares) && squares.every((square) => square !== '')){
-            setSquares(`IT'S A DRAW! Restart the game`)
+            setStatus(`IT'S A DRAW! Restart the game`)
         } else if (getWinner(squares)) {
             setStatus(`WINNER IS ${getWinner(squares)}! Restart the game`)
         }
