@@ -23,6 +23,9 @@ const Game = () => {
     const [squares, setSquares] = useState(Array(9).fill(''));
     const [isXturn, setIsXturn] = useState(true);
     const [status, setStatus] = useState('');
+    const [scoreX, setScoreX] = useState(0);
+    const [scoreO, setScoreO] = useState(0);
+    const [scoreDraw, setScoreDraw] = useState(0);
 
     function handleRestart(){
         setSquares(Array(9).fill(''));
@@ -71,14 +74,28 @@ const Game = () => {
     useEffect(() => {
         if (!getWinner(squares) && squares.every((square) => square !== '')){
             setStatus(`IT'S A DRAW! Restart the game`)
+            setScoreDraw(prevScoreDraw => ++prevScoreDraw);
         } else if (getWinner(squares)) {
             setStatus(`WINNER IS ${getWinner(squares)}! Restart the game`)
+            if (getWinner(squares) === 'X') {
+                setScoreX(prevScoreX => ++prevScoreX);
+            }
+            if (getWinner(squares) === 'O') {
+                setScoreO(prevScoreO => ++prevScoreO);
+            }
+
         }
     }, [squares, isXturn]);
 
 
     return (
         <div className='game_container'>
+
+                <div className='row'>
+                    <div className='square_score'>PLAYER X {scoreX}</div>
+                    <div className='square_score'>DRAW {scoreDraw}</div>
+                    <div className='square_score'>PLAYER O {scoreO}</div>
+                </div>
 
                 <div className='row'>
                     <Square value={squares[0]} onClickHandler={() => handleClick(0)}/>
