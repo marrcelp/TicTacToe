@@ -15,10 +15,16 @@ const Game = () => {
 
     const [squares, setSquares] = useState(Array(9).fill(''));
     const [isXturn, setIsXturn] = useState(true);
+    const [status, setStatus] = useState('');
+
+    function handleRestart(){
+        setSquares(Array(9).fill(''));
+        setStatus('');
+    }
 
     function handleClick(squareNumber){
         let squaresCopy = [...squares];
-        if (squaresCopy[squareNumber] !== ''){
+        if (getWinner(squaresCopy) || squaresCopy[squareNumber] !== ''){
             return;
         }
         squaresCopy[squareNumber] = isXturn ? 'X' : 'O';
@@ -29,21 +35,39 @@ const Game = () => {
 
     }
 
-    function handleRestart(){
-        setSquares(Array(9).fill(''));
+    function getWinner(squares) {
+
+        const winningPatterns = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ];
+
+        for (let i = 0; i < winningPatterns.length; i++) {
+            const [square1, square2, square3] = winningPatterns[i];
+
+            if (squares[square1] !== '' && squares[square1] === squares[square2] && squares[square1] === squares[square3]) {
+
+                return squares[square1];
+            }
+        }
+
+        return null
+
     }
 
-    const winningPatterns = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
-    ];
-
+    useEffect(() => {
+        if (!getWinner(squares) && squares.every((square) => square !== '')){
+            setSquares(`IT'S A DRAW! Restart the game`)
+        } else if (getWinner(squares)) {
+            setStatus(`WINNER IS ${getWinner(squares)}! Restart the game`)
+        }
+    }, [squares, isXturn]);
 
 
     return (
@@ -68,6 +92,7 @@ const Game = () => {
                 </div>
 
                 <div className='row'>
+                    <h1>{status}</h1>
                     <p>{isXturn ? `It's X turn` : `It's O turn` }</p>
                 </div>
 
