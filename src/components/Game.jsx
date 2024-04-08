@@ -9,16 +9,29 @@ function Square({value, onClickHandler}){
 //0 1 2
 //3 4 5
 //6 7 8
+// zielony - #3daba0
+//ciemnozielony #07403b
+//zolty - #edb82a
+// rozowy - #f088d4
+//blekitny #90a3e0
+// bordowy #8e2c2d
+
 
 
 const Game = () => {
 
     const [squares, setSquares] = useState(Array(9).fill(''));
     const [isXturn, setIsXturn] = useState(true);
+    const [status, setStatus] = useState('');
+
+    function handleRestart(){
+        setSquares(Array(9).fill(''));
+        setStatus('');
+    }
 
     function handleClick(squareNumber){
         let squaresCopy = [...squares];
-        if (squaresCopy[squareNumber] !== ''){
+        if (getWinner(squaresCopy) || squaresCopy[squareNumber] !== ''){
             return;
         }
         squaresCopy[squareNumber] = isXturn ? 'X' : 'O';
@@ -27,12 +40,46 @@ const Game = () => {
         setIsXturn(!isXturn);
         setSquares(squaresCopy);
 
+    }
 
+    function getWinner(squares) {
+
+        const winningPatterns = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ];
+
+        for (let i = 0; i < winningPatterns.length; i++) {
+            const [square1, square2, square3] = winningPatterns[i];
+
+            if (squares[square1] !== '' && squares[square1] === squares[square2] && squares[square1] === squares[square3]) {
+
+                return squares[square1];
+            }
+        }
+
+        return null
 
     }
 
+    useEffect(() => {
+        if (!getWinner(squares) && squares.every((square) => square !== '')){
+            setStatus(`IT'S A DRAW! Restart the game`)
+        } else if (getWinner(squares)) {
+            setStatus(`WINNER IS ${getWinner(squares)}! Restart the game`)
+        }
+    }, [squares, isXturn]);
+
+
     return (
         <div className='game_container'>
+
                 <div className='row'>
                     <Square value={squares[0]} onClickHandler={() => handleClick(0)}/>
                     <Square value={squares[1]} onClickHandler={() => handleClick(1)}/>
@@ -50,6 +97,16 @@ const Game = () => {
                     <Square value={squares[7]} onClickHandler={() => handleClick(7)}/>
                     <Square value={squares[8]} onClickHandler={() => handleClick(8)}/>
                 </div>
+
+                <div className='row'>
+                    <h1>{status}</h1>
+                    <p>{isXturn ? `It's X turn` : `It's O turn` }</p>
+                </div>
+
+                <div className='row'>
+                    <button onClick={handleRestart}>RESTART THE GAME</button>
+                </div>
+
         </div>
     );
 };
