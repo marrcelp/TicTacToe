@@ -21,8 +21,8 @@
 
   .square {
     background-color: #3daba0;
-    width: 80px;
-    height: 80px;
+    width: 65px;
+    height: 65px;
     margin: 5px;
     border: none;
     border-radius: 5px;
@@ -32,4 +32,28 @@
     font-size: 30px;
 
   }
+
+  .square_score {
+    background-color: #90a3e0;
+    width: 65px;
+    height: 65px;
+    margin: 0 5px 30px 5px;
+    border: none;
+    border-radius: 5px;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+
+    &:first-child {
+      background-color: #f088d4;
+    }
+
+    &:last-child {
+      background-color: #edb82a;
+    }
+
+  }
+
+
 }
