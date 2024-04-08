@@ -9,6 +9,13 @@ function Square({value, onClickHandler}){
 //0 1 2
 //3 4 5
 //6 7 8
+// zielony - #3daba0
+//ciemnozielony #07403b
+//zolty - #edb82a
+// rozowy - #f088d4
+//blekitny #90a3e0
+// bordowy #8e2c2d
+
 
 
 const Game = () => {
