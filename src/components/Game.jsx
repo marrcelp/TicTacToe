@@ -2,20 +2,9 @@ import React, {useState, useEffect} from 'react';
 
 function Square({value, onClickHandler}){
     return (
-      <button className='square' onClick={onClickHandler}>{value}</button>
+      <button className={value === 'X' ? 'square square-x' : 'square square-o'} onClick={onClickHandler}>{value}</button>
     );
 }
-
-//0 1 2
-//3 4 5
-//6 7 8
-// zielony - #3daba0
-//ciemnozielony #07403b
-//zolty - #edb82a
-// rozowy - #f088d4
-//blekitny #90a3e0
-// bordowy #8e2c2d
-
 
 
 const Game = () => {
@@ -44,7 +33,6 @@ const Game = () => {
 
         setIsXturn(!isXturn);
         setSquares(squaresCopy);
-
     }
 
     function getWinner(squares) {
@@ -70,7 +58,6 @@ const Game = () => {
         }
 
         return null
-
     }
 
     useEffect(() => {
@@ -89,7 +76,6 @@ const Game = () => {
             if (getWinner(squares) === 'O') {
                 setScoreO(prevScoreO => ++prevScoreO);
             }
-
         }
     }, [squares, isXturn]);
 
@@ -98,9 +84,18 @@ const Game = () => {
         <div className='game_container'>
 
                 <div className='row'>
-                    <div className='square_score'>PLAYER X<br></br>{scoreX}</div>
-                    <div className='square_score'>DRAW<br></br>{scoreDraw}</div>
-                    <div className='square_score'>PLAYER O<br></br>{scoreO}</div>
+                    <div className='square_score'>
+                        <h2>PLAYER X</h2>
+                        <p>{scoreX}</p>
+                    </div>
+                    <div className='square_score'>
+                        <h2>DRAW</h2>
+                        <p>{scoreDraw}</p>
+                    </div>
+                    <div className='square_score'>
+                        <h2>PLAYER O</h2>
+                        <p>{scoreO}</p>
+                    </div>
                 </div>
 
                 <div className='row'>
