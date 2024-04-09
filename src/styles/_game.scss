@@ -31,6 +31,14 @@
     font-style: normal;
     font-size: 30px;
 
+    &.square-x {
+      color: #f088d4;
+    }
+
+    &.square-o {
+      color: #edb82a;
+    }
+
   }
 
   .square_score {
@@ -40,11 +48,9 @@
     margin: 0 5px 30px 5px;
     border: none;
     border-radius: 5px;
-    font-family: "Work Sans", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    font-size: 12px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &:first-child {
       background-color: #f088d4;
@@ -52,6 +58,19 @@
 
     &:last-child {
       background-color: #edb82a;
+    }
+
+    h2, p {
+      font-family: "Work Sans", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 20px;
     }
 
   }
@@ -66,7 +85,7 @@
     padding: 5px;
     width: 215px;
     background-color: lightgrey;
-    border: 1px solid #72CFF9;
+    border: 1px solid black;
     cursor: pointer;
     //margin-top: 10px;
 
@@ -79,8 +98,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  //justify-content: space-between;
-  //height: 45px;
   margin: 10px 0;
 
   .status_title {
@@ -94,3 +111,4 @@
   }
 
 }
+
