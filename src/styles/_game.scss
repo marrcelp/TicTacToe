@@ -40,10 +40,11 @@
     margin: 0 5px 30px 5px;
     border: none;
     border-radius: 5px;
-    font-family: "Lilita One", sans-serif;
-    font-weight: 400;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
     font-style: normal;
-    font-size: 15px;
+    font-size: 12px;
+    text-align: center;
 
     &:first-child {
       background-color: #f088d4;
@@ -55,5 +56,41 @@
 
   }
 
+  .button_restart {
+    border-radius: 5px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    width: 215px;
+    background-color: lightgrey;
+    border: 1px solid #72CFF9;
+    cursor: pointer;
+    //margin-top: 10px;
+
+  }
+
+}
+
+.row_text {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //justify-content: space-between;
+  //height: 45px;
+  margin: 10px 0;
+
+  .status_title {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+    text-align: center;
+    color: #90a3e0;
+
+  }
 
 }

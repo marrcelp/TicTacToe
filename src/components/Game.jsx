@@ -26,10 +26,12 @@ const Game = () => {
     const [scoreX, setScoreX] = useState(0);
     const [scoreO, setScoreO] = useState(0);
     const [scoreDraw, setScoreDraw] = useState(0);
+    const [isGameOver, setIsGameOver] = useState(false);
 
     function handleRestart(){
         setSquares(Array(9).fill(''));
         setStatus('');
+        setIsGameOver(false)
     }
 
     function handleClick(squareNumber){
@@ -73,10 +75,14 @@ const Game = () => {
 
     useEffect(() => {
         if (!getWinner(squares) && squares.every((square) => square !== '')){
-            setStatus(`IT'S A DRAW! Restart the game`)
+            setStatus(`IT'S A DRAW! Restart the game.`)
+            setIsGameOver(true);
             setScoreDraw(prevScoreDraw => ++prevScoreDraw);
+
         } else if (getWinner(squares)) {
-            setStatus(`WINNER IS ${getWinner(squares)}! Restart the game`)
+            setIsGameOver(true);
+            setStatus(`WINNER IS ${getWinner(squares)}! Restart the game.`);
+
             if (getWinner(squares) === 'X') {
                 setScoreX(prevScoreX => ++prevScoreX);
             }
@@ -92,9 +98,9 @@ const Game = () => {
         <div className='game_container'>
 
                 <div className='row'>
-                    <div className='square_score'>PLAYER X {scoreX}</div>
-                    <div className='square_score'>DRAW {scoreDraw}</div>
-                    <div className='square_score'>PLAYER O {scoreO}</div>
+                    <div className='square_score'>PLAYER X<br></br>{scoreX}</div>
+                    <div className='square_score'>DRAW<br></br>{scoreDraw}</div>
+                    <div className='square_score'>PLAYER O<br></br>{scoreO}</div>
                 </div>
 
                 <div className='row'>
@@ -115,13 +121,13 @@ const Game = () => {
                     <Square value={squares[8]} onClickHandler={() => handleClick(8)}/>
                 </div>
 
-                <div className='row'>
-                    <h1>{status}</h1>
-                    <p>{isXturn ? `It's X turn` : `It's O turn` }</p>
+                <div className='row_text'>
+                    <h1 className='status_title'>{status}</h1>
+                    {!isGameOver && <p className='status_title'>{isXturn ? `It's X turn` : `It's O turn` }</p>}
                 </div>
 
                 <div className='row'>
-                    <button onClick={handleRestart}>RESTART THE GAME</button>
+                    <button className='button_restart' onClick={handleRestart}>RESTART THE GAME</button>
                 </div>
 
         </div>
