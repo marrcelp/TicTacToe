@@ -122,7 +122,7 @@ const Game = () => {
                 </div>
 
                 <div className='row'>
-                    <button className='button_restart' onClick={handleRestart}>RESTART THE GAME</button>
+                    <button className='button_restart' onClick={handleRestart}>RESTART GAME</button>
                 </div>
 
         </div>
