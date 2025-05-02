@@ -1,5 +1,9 @@
+![demo gif](./src/assets/tictactoe-gif.gif)
+
 Welcome to my app - classic Tic-tac-toe gome, where two players take turns placing circles and crosses on a grid of nine squares, aiming to form three of their symbols in a row to win. This game requires strategic thinking and planning, while also being easy and quick to play.
 
+## You can check the application using below link: 
+[https://tic-tac-toe-demonstration.netlify.app/](https://tic-tac-toe-demonstration.netlify.app/)
 
 ## Getting Started
 
@@ -51,7 +55,5 @@ The project is organized as follows:
 - Special thanks to the React, JavaScript and Sass communities for their excellent documentation and support.
 Enjoy helping!
 
-## You can check the application using below link: 
-[https://tic-tac-toe-demonstration.netlify.app/](https://tic-tac-toe-demonstration.netlify.app/)
 
 **App created by marrcelp.**
